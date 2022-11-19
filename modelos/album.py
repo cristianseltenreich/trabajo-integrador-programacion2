@@ -44,8 +44,9 @@ class Album:
     def obtenerCanciones(self):
         canciones = []
         for c in biblioteca.Biblioteca.obtenerCanciones():
-            if self.__id == c['id']:
-                canciones.append(c)
+            for can in self.__canciones:
+                if can['id'] == c.obtenerId():
+                    canciones.append(c)
         return canciones
 
     def __repr__(self):

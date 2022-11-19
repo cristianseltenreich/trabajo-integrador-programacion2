@@ -38,14 +38,14 @@ class Artista:
     def obtenerCanciones(self):
         canciones = []
         for c in biblioteca.Biblioteca.obtenerCanciones():
-            if self.__id == c['id']:
+            if self == c.obtenerArtista():
                 canciones.append(c)
         return canciones
 
     def obtenerAlbumes(self):
         albumes = []
         for a in biblioteca.Biblioteca.obtenerAlbumes():
-            if self.__id == a['id']:
+            if self == a.obtenerArtista():
                 albumes.append(a)
         return albumes
 
