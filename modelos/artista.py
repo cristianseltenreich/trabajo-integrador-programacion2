@@ -36,10 +36,18 @@ class Artista:
         return self.__genero
 
     def obtenerCanciones(self):
-        return biblioteca.Biblioteca.obtenerCanciones()
+        canciones = []
+        for c in biblioteca.Biblioteca.obtenerCanciones():
+            if self.__id == c['id']:
+                canciones.append(c)
+        return canciones
 
-    def obtenerAlbunes(self):
-        return biblioteca.Biblioteca.obtenerAlbumes()
+    def obtenerAlbumes(self):
+        albumes = []
+        for a in biblioteca.Biblioteca.obtenerAlbumes():
+            if self.__id == a['id']:
+                albumes.append(a)
+        return albumes
 
     def __repr__(self):
         return json.dumps(self.convertirAJSON())
@@ -50,7 +58,7 @@ class Artista:
             "tipo": self.obtenerTipo(),
             "genero": self.obtenerGenero().obtenerNombre(),
             "albumes": self._mapearAlbumes(),
-            "canciones": len(self.obtenerCanciones())
+            "canciones": self._mapearCanciones()
         }
 
     def convertirAJSONFull(self):

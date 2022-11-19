@@ -36,13 +36,17 @@ class Album:
         return self.__anio
 
     def obtenerGenero(self):
-        return biblioteca.Biblioteca.buscarGenero(self.__id)
+        return biblioteca.Biblioteca.buscarGenero(self.__genero)
 
-    def obtenerAtista(self):
-        return biblioteca.Biblioteca.buscarArtista(self.__id)
+    def obtenerArtista(self):
+        return biblioteca.Biblioteca.buscarArtista(self.__artista)
 
     def obtenerCanciones(self):
-        return biblioteca.Biblioteca.buscarCancion(self.__id)
+        canciones = []
+        for c in biblioteca.Biblioteca.obtenerCanciones():
+            if self.__id == c['id']:
+                canciones.append(c)
+        return canciones
 
     def __repr__(self):
         return json.dumps({

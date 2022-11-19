@@ -25,10 +25,10 @@ class Cancion:
         return self.__nombre
 
     def obtenerArtista(self):
-        pass
+        return biblioteca.Biblioteca.buscarArtista(self.__artista)
 
     def obtenerAlbum(self):
-        pass
+        return biblioteca.Biblioteca.obtenerAlbumDeCancion(self.__id)
 
     def __repr__(self):
         return json.dumps({
