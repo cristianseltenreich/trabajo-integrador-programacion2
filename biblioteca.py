@@ -63,21 +63,24 @@ class Biblioteca:
         artista = None
         for a in artistas:
             if a.obtenerId() == id:
-                return artista
+                artista = a
+        return artista
 
     def buscarCancion(id):
         canciones = Biblioteca.__canciones
         cancion = None
         for c in canciones:
             if c.obtenerId() == id:
-                return cancion
+                cancion = c
+        return cancion
     
     def buscarAlbum(id:str):
         albumes = Biblioteca.__albumes
         album = None
         for a in albumes:
             if a.obtenerId() == id:
-                return album
+                album = a
+        return album
 
     def obtenerAlbumDeCancion(id):
         albumes = Biblioteca.__albumes
@@ -85,14 +88,16 @@ class Biblioteca:
         for a in albumes:
             for c in a.obtenerCanciones():
                 if id == c.obtenerId():
-                    return album
+                    album = a
+        return album
 
     def buscarGenero(id:str):
         generos = Biblioteca.__generos
         genero = None
         for g in generos:
             if g.obtenerId() == id:
-                return genero
+                genero = g
+        return genero
 
     def __parsearArchivoDeDatos():
         with open(Biblioteca.__archivoDeDatos, 'r') as f:
